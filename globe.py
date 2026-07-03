@@ -401,3 +401,21 @@ def haversine_distance(lon1, lat1, lon2, lat2):
     return R * c
 
 # END_haversine-distance
+
+# BEGIN_timezone-overlay
+
+def approximate_timezone(lon):
+    """Rough UTC offset from longitude (ignores DST/political borders)."""
+    return round(lon / 15.0)
+
+TIMEZONE_LABELS = {
+    -12: "UTC-12", -11: "UTC-11", -10: "HST", -9: "AKST",
+    -8: "PST", -7: "MST", -6: "CST", -5: "EST",
+    -4: "AST", -3: "BRT", -2: "UTC-2", -1: "UTC-1",
+    0: "UTC", 1: "CET", 2: "EET", 3: "MSK",
+    4: "GST", 5: "PKT", 5.5: "IST", 6: "BST",
+    7: "ICT", 8: "CST", 9: "JST", 10: "AEST",
+    11: "AEDT", 12: "NZST",
+}
+
+# END_timezone-overlay

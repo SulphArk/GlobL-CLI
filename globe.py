@@ -419,3 +419,17 @@ TIMEZONE_LABELS = {
 }
 
 # END_timezone-overlay
+
+# BEGIN_more-countries
+
+# Additional territories and small nations
+EXTRA_PLACES = {
+    "Fiji": (178.0, -17.8), "Samoa": (-172.0, -13.8),
+    "Tonga": (-175.2, -21.2), "Maldives": (73.5, 3.2),
+    "Bahrain": (50.6, 26.1), "Qatar": (51.2, 25.4),
+    "Kuwait": (47.5, 29.4), "Oman": (55.9, 21.5),
+    "Lebanon": (35.9, 33.9), "Georgia": (43.4, 42.3),
+    "Armenia": (45.0, 40.1), "Azerbaijan": (47.6, 40.1),
+}
+
+# END_more-countries

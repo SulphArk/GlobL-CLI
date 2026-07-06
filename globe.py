@@ -433,3 +433,23 @@ EXTRA_PLACES = {
 }
 
 # END_more-countries
+
+# BEGIN_population-data
+
+# Approximate populations (millions, 2023 est.)
+POPULATIONS = {
+    "China": 1425, "India": 1428, "USA": 340, "Indonesia": 277,
+    "Pakistan": 240, "Nigeria": 223, "Brazil": 216, "Bangladesh": 172,
+    "Russia": 144, "Mexico": 128, "Japan": 123, "Ethiopia": 126,
+    "Philippines": 117, "Egypt": 112, "DR Congo": 102, "Vietnam": 99,
+    "Iran": 88, "Turkey": 85, "Germany": 84, "Thailand": 72,
+    "United Kingdom": 67, "France": 65, "Tanzania": 65, "Italy": 59,
+    "South Africa": 60, "Myanmar": 55, "South Korea": 52, "Colombia": 52,
+    "Kenya": 55, "Spain": 47, "Argentina": 46, "Algeria": 45,
+    "Canada": 39, "Poland": 38, "Morocco": 37, "Saudi Arabia": 36,
+    "Uzbekistan": 35, "Peru": 34, "Angola": 36, "Malaysia": 33,
+    "Ghana": 34, "Mozambique": 33, "Nepal": 30, "Yemen": 30,
+    "Venezuela": 29, "Australia": 26, "North Korea": 26, "Madagascar": 29,
+}
+
+# END_population-data

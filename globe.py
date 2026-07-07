@@ -453,3 +453,35 @@ POPULATIONS = {
 }
 
 # END_population-data
+
+# BEGIN_color-themes
+
+# Alternative color themes
+THEMES = {
+    "gruvbox": {
+        "land_near": 142, "land_mid": 100, "land_far": 243,
+        "ocean_near": 66, "ocean_far": 24, "limb": 237,
+        "marker": 214, "highlight": 167, "text": 223,
+        "header": 180, "dim": 246,
+    },
+    "nord": {
+        "land_near": 150, "land_mid": 109, "land_far": 245,
+        "ocean_near": 111, "ocean_far": 60, "limb": 59,
+        "marker": 179, "highlight": 174, "text": 252,
+        "header": 188, "dim": 246,
+    },
+    "dracula": {
+        "land_near": 84, "land_mid": 71, "land_far": 246,
+        "ocean_near": 117, "ocean_far": 61, "limb": 236,
+        "marker": 215, "highlight": 198, "text": 252,
+        "header": 189, "dim": 246,
+    },
+    "solarized": {
+        "land_near": 106, "land_mid": 100, "land_far": 244,
+        "ocean_near": 33, "ocean_far": 32, "limb": 236,
+        "marker": 166, "highlight": 160, "text": 230,
+        "header": 136, "dim": 246,
+    },
+}
+
+# END_color-themes

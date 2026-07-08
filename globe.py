@@ -485,3 +485,20 @@ THEMES = {
 }
 
 # END_color-themes
+
+# BEGIN_coord-formatter
+
+def format_coordinates(lon, lat):
+    """Format lon/lat as DMS string like '51\u00b030\'N 0\u00b007\'W'."""
+    def dms(val, pos_label, neg_label):
+        direction = pos_label if val >= 0 else neg_label
+        val = abs(val)
+        degrees = int(val)
+        minutes = int((val - degrees) * 60)
+        seconds = int(((val - degrees) * 60 - minutes) * 60)
+        return f"{degrees}\u00b0{minutes}'{seconds}\"{direction}"
+    lat_str = dms(lat, "N", "S")
+    lon_str = dms(lon, "E", "W")
+    return f"{lat_str} {lon_str}"
+
+# END_coord-formatter

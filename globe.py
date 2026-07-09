@@ -502,3 +502,26 @@ def format_coordinates(lon, lat):
     return f"{lat_str} {lon_str}"
 
 # END_coord-formatter
+
+# BEGIN_bearing-calc
+
+def calculate_bearing(lon1, lat1, lon2, lat2):
+    """Calculate initial bearing from point 1 to point 2 in degrees."""
+    DEG_TO_RAD = math.pi / 180.0
+    lat1_r, lat2_r = lat1 * DEG_TO_RAD, lat2 * DEG_TO_RAD
+    dlon = (lon2 - lon1) * DEG_TO_RAD
+    x = math.sin(dlon) * math.cos(lat2_r)
+    y = (math.cos(lat1_r) * math.sin(lat2_r)
+         - math.sin(lat1_r) * math.cos(lat2_r) * math.cos(dlon))
+    bearing = math.atan2(x, y) / DEG_TO_RAD
+    return (bearing + 360) % 360
+
+BEARING_NAMES = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE",
+                 "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
+
+def bearing_to_compass(degrees):
+    """Convert bearing degrees to compass direction name."""
+    index = round(degrees / 22.5) % 16
+    return BEARING_NAMES[index]
+
+# END_bearing-calc

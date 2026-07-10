@@ -525,3 +525,25 @@ def bearing_to_compass(degrees):
     return BEARING_NAMES[index]
 
 # END_bearing-calc
+
+# BEGIN_antipode
+
+def find_antipode(lon, lat):
+    """Find the point on the opposite side of the Earth."""
+    anti_lon = -lon if lon <= 0 else 360 - lon
+    anti_lat = -lat
+    return (anti_lon, anti_lat)
+
+def nearest_country_to(target_lon, target_lat, country_dict=None):
+    """Find the nearest country to given coordinates."""
+    if country_dict is None:
+        country_dict = COUNTRIES
+    best_name, best_dist = None, float("inf")
+    for name, (lon, lat) in country_dict.items():
+        d = haversine_distance(target_lon, target_lat, lon, lat)
+        if d < best_dist:
+            best_dist = d
+            best_name = name
+    return best_name, best_dist
+
+# END_antipode

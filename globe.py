@@ -547,3 +547,21 @@ def nearest_country_to(target_lon, target_lat, country_dict=None):
     return best_name, best_dist
 
 # END_antipode
+
+# BEGIN_daylight-calc
+
+def approximate_daylight(lat, day_of_year):
+    """Estimate daylight hours for a latitude and day of year."""
+    DEG_TO_RAD = math.pi / 180.0
+    lat_rad = lat * DEG_TO_RAD
+    declination = 23.45 * math.sin(DEG_TO_RAD * (360 / 365) * (day_of_year - 81))
+    dec_rad = declination * DEG_TO_RAD
+    cos_hour = -math.tan(lat_rad) * math.tan(dec_rad)
+    if cos_hour > 1:
+        return 0.0   # Polar night
+    if cos_hour < -1:
+        return 24.0  # Midnight sun
+    hour_angle = math.acos(cos_hour) / DEG_TO_RAD
+    return 2 * hour_angle / 15.0
+
+# END_daylight-calc

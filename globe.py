@@ -565,3 +565,25 @@ def approximate_daylight(lat, day_of_year):
     return 2 * hour_angle / 15.0
 
 # END_daylight-calc
+
+# BEGIN_grid-overlay
+
+def should_draw_grid_line(lon, lat, grid_spacing=30):
+    """Determine if a point lies on a major grid line."""
+    lat_mod = abs(lat) % grid_spacing
+    lon_mod = abs(lon) % grid_spacing
+    if lat_mod == 0 and lon_mod == 0:
+        return "intersection"
+    if lat_mod == 0:
+        return "latitude"
+    if lon_mod == 0:
+        return "longitude"
+    return None
+
+NOTABLE_LATITUDES = {
+    0: "Equator", 23.44: "Tropic of Cancer",
+    -23.44: "Tropic of Capricorn",
+    66.56: "Arctic Circle", -66.56: "Antarctic Circle",
+}
+
+# END_grid-overlay

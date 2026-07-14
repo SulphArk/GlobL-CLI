@@ -587,3 +587,30 @@ NOTABLE_LATITUDES = {
 }
 
 # END_grid-overlay
+
+# BEGIN_capitals
+
+CAPITALS = {
+    "USA": ("Washington DC", -77.0, 38.9),
+    "United Kingdom": ("London", -0.1, 51.5),
+    "France": ("Paris", 2.3, 48.9),
+    "Germany": ("Berlin", 13.4, 52.5),
+    "Japan": ("Tokyo", 139.7, 35.7),
+    "China": ("Beijing", 116.4, 39.9),
+    "India": ("New Delhi", 77.1, 28.6),
+    "Brazil": ("Brasilia", -47.9, -15.8),
+    "Russia": ("Moscow", 37.6, 55.8),
+    "Australia": ("Canberra", 149.1, -35.3),
+    "Canada": ("Ottawa", -75.7, 45.4),
+    "South Korea": ("Seoul", 127.0, 37.6),
+    "Mexico": ("Mexico City", -99.1, 19.4),
+    "Egypt": ("Cairo", 31.2, 30.0),
+    "South Africa": ("Pretoria", 28.2, -25.7),
+    "Argentina": ("Buenos Aires", -58.4, -34.6),
+    "Italy": ("Rome", 12.5, 41.9),
+    "Spain": ("Madrid", -3.7, 40.4),
+    "Turkey": ("Ankara", 32.9, 39.9),
+    "Iran": ("Tehran", 51.4, 35.7),
+}
+
+# END_capitals

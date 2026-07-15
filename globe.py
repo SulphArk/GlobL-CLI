@@ -614,3 +614,21 @@ CAPITALS = {
 }
 
 # END_capitals
+
+# BEGIN_country-areas
+
+COUNTRY_AREAS = {
+    "Russia": 17098, "Canada": 9985, "USA": 9834, "China": 9597,
+    "Brazil": 8516, "Australia": 7692, "India": 3287, "Argentina": 2780,
+    "Kazakhstan": 2725, "Algeria": 2382, "DR Congo": 2345,
+    "Saudi Arabia": 2150, "Mexico": 1964, "Indonesia": 1905,
+    "Sudan": 1886, "Libya": 1760, "Iran": 1748, "Mongolia": 1567,
+    "Peru": 1285, "Chad": 1284, "Niger": 1267, "Angola": 1247,
+    "Mali": 1240, "South Africa": 1221, "Colombia": 1142,
+    "Ethiopia": 1104, "Bolivia": 1098, "Mauritania": 1031,
+    "Egypt": 1002, "Tanzania": 945, "Nigeria": 924,
+    "Venezuela": 916, "Pakistan": 881, "Namibia": 825,
+    "Mozambique": 802, "Turkey": 784, "Chile": 756,
+}
+
+# END_country-areas

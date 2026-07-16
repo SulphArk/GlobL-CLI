@@ -632,3 +632,19 @@ COUNTRY_AREAS = {
 }
 
 # END_country-areas
+
+# BEGIN_midpoint
+
+def geographic_midpoint(lon1, lat1, lon2, lat2):
+    """Calculate the geographic midpoint between two coordinates."""
+    DEG_TO_RAD = math.pi / 180.0
+    lat1_r, lat2_r = lat1 * DEG_TO_RAD, lat2 * DEG_TO_RAD
+    dlon = (lon2 - lon1) * DEG_TO_RAD
+    x = math.cos(lat1_r) * math.cos(lat2_r) * math.cos(dlon)
+    y = math.cos(lat1_r) * math.cos(lat2_r) * math.sin(dlon)
+    z = math.sin(lat1_r) + math.sin(lat2_r)
+    mid_lat = math.atan2(z, math.sqrt(x**2 + y**2)) / DEG_TO_RAD
+    mid_lon = (lon1 * DEG_TO_RAD + math.atan2(y, x)) / DEG_TO_RAD
+    return mid_lon, mid_lat
+
+# END_midpoint

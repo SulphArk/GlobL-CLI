@@ -648,3 +648,23 @@ def geographic_midpoint(lon1, lat1, lon2, lat2):
     return mid_lon, mid_lat
 
 # END_midpoint
+
+# BEGIN_country-search
+
+def search_countries(query, country_dict=None):
+    """Search for countries by name with fuzzy matching."""
+    if country_dict is None:
+        country_dict = COUNTRIES
+    query = query.lower().strip()
+    exact, prefix, contains = [], [], []
+    for name in country_dict:
+        lower = name.lower()
+        if lower == query:
+            exact.append(name)
+        elif lower.startswith(query):
+            prefix.append(name)
+        elif query in lower:
+            contains.append(name)
+    return exact + prefix + contains
+
+# END_country-search

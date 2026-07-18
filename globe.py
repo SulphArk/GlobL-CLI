@@ -668,3 +668,20 @@ def search_countries(query, country_dict=None):
     return exact + prefix + contains
 
 # END_country-search
+
+# BEGIN_smooth-rotation
+
+def ease_in_out(t):
+    """Smooth step interpolation (ease in-out)."""
+    return t * t * (3 - 2 * t)
+
+def lerp_angle(a, b, t):
+    """Linearly interpolate between two angles with wrapping."""
+    diff = ((b - a + math.pi) % (2 * math.pi)) - math.pi
+    return a + diff * t
+
+def smooth_rotate_to(current_angle, target_angle, speed=0.1):
+    """Smoothly rotate toward a target angle."""
+    return lerp_angle(current_angle, target_angle, ease_in_out(speed))
+
+# END_smooth-rotation

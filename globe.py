@@ -685,3 +685,31 @@ def smooth_rotate_to(current_angle, target_angle, speed=0.1):
     return lerp_angle(current_angle, target_angle, ease_in_out(speed))
 
 # END_smooth-rotation
+
+# BEGIN_flight-path
+
+def great_circle_points(lon1, lat1, lon2, lat2, num_points=50):
+    """Generate points along a great circle path between two locations."""
+    DEG_TO_RAD = math.pi / 180.0
+    lat1_r, lon1_r = lat1 * DEG_TO_RAD, lon1 * DEG_TO_RAD
+    lat2_r, lon2_r = lat2 * DEG_TO_RAD, lon2 * DEG_TO_RAD
+    d = 2 * math.asin(math.sqrt(
+        math.sin((lat2_r - lat1_r) / 2) ** 2 +
+        math.cos(lat1_r) * math.cos(lat2_r) *
+        math.sin((lon2_r - lon1_r) / 2) ** 2))
+    points = []
+    if d < 1e-10:
+        return [(lon1, lat1)]
+    for i in range(num_points + 1):
+        f = i / num_points
+        A = math.sin((1 - f) * d) / math.sin(d)
+        B = math.sin(f * d) / math.sin(d)
+        x = A * math.cos(lat1_r) * math.cos(lon1_r) + B * math.cos(lat2_r) * math.cos(lon2_r)
+        y = A * math.cos(lat1_r) * math.sin(lon1_r) + B * math.cos(lat2_r) * math.sin(lon2_r)
+        z = A * math.sin(lat1_r) + B * math.sin(lat2_r)
+        lat = math.atan2(z, math.sqrt(x**2 + y**2)) / DEG_TO_RAD
+        lon = math.atan2(y, x) / DEG_TO_RAD
+        points.append((lon, lat))
+    return points
+
+# END_flight-path

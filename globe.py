@@ -713,3 +713,26 @@ def great_circle_points(lon1, lat1, lon2, lat2, num_points=50):
     return points
 
 # END_flight-path
+
+# BEGIN_continent-centroids
+
+def compute_centroid(polygon):
+    """Compute the centroid of a polygon defined by (lon, lat) points."""
+    n = len(polygon)
+    if n == 0:
+        return (0, 0)
+    sum_lon = sum(p[0] for p in polygon)
+    sum_lat = sum(p[1] for p in polygon)
+    return (sum_lon / n, sum_lat / n)
+
+CONTINENT_CENTROIDS = {}
+for _name, _poly in CONTINENTS.items():
+    CONTINENT_CENTROIDS[_name] = compute_centroid(_poly)
+
+CONTINENT_AREAS = {
+    "North America": 24.71, "South America": 17.84,
+    "Europe": 10.18, "Africa": 30.37,
+    "Asia": 44.58, "Australia": 8.56, "Greenland": 2.17,
+}
+
+# END_continent-centroids

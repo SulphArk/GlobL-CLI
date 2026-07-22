@@ -736,3 +736,23 @@ CONTINENT_AREAS = {
 }
 
 # END_continent-centroids
+
+# BEGIN_color-interpolation
+
+def interpolate_color(c1, c2, t):
+    """Interpolate between two 256-color values."""
+    def to_rgb(c):
+        if c < 16: return (0, 0, 0)
+        if c < 232:
+            c -= 16
+            return ((c // 36) * 51, ((c // 6) % 6) * 51, (c % 6) * 51)
+        v = 8 + (c - 232) * 10
+        return (v, v, v)
+    r1, g1, b1 = to_rgb(c1)
+    r2, g2, b2 = to_rgb(c2)
+    r, g, b = int(r1 + (r2-r1)*t), int(g1 + (g2-g1)*t), int(b1 + (b2-b1)*t)
+    if r == g == b:
+        return 232 + min(r // 10, 23)
+    return 16 + 36*(r//51) + 6*(g//51) + (b//51)
+
+# END_color-interpolation

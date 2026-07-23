@@ -756,3 +756,27 @@ def interpolate_color(c1, c2, t):
     return 16 + 36*(r//51) + 6*(g//51) + (b//51)
 
 # END_color-interpolation
+
+# BEGIN_legend
+
+def render_legend(use_color=True):
+    """Render a legend explaining the globe symbols."""
+    entries = [
+        ("\u2588", "Land (near)", COLOR_LAND_NEAR if use_color else ""),
+        ("\u2593", "Land (mid)", COLOR_LAND_MID if use_color else ""),
+        ("\u2591", "Land (far)", COLOR_LAND_FAR if use_color else ""),
+        ("~", "Ocean (near)", COLOR_OCEAN_NEAR if use_color else ""),
+        (".", "Ocean (far)", COLOR_OCEAN_FAR if use_color else ""),
+        ("\u00b7", "Globe edge", COLOR_LIMB if use_color else ""),
+        ("\u25c6", "Country marker", COLOR_MARKER if use_color else ""),
+        ("\u25cf", "Highlighted", COLOR_HIGHLIGHT if use_color else ""),
+    ]
+    lines = []
+    for symbol, label, color in entries:
+        if use_color and color:
+            lines.append(f"  {color}{symbol}{RESET} {label}")
+        else:
+            lines.append(f"  {symbol} {label}")
+    return lines
+
+# END_legend

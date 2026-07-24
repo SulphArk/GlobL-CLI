@@ -780,3 +780,22 @@ def render_legend(use_color=True):
     return lines
 
 # END_legend
+
+# BEGIN_extremes
+
+def find_geographic_extremes(country_dict=None):
+    """Find the northernmost, southernmost, easternmost, westernmost countries."""
+    if country_dict is None:
+        country_dict = COUNTRIES
+    northernmost = max(country_dict.items(), key=lambda x: x[1][1])
+    southernmost = min(country_dict.items(), key=lambda x: x[1][1])
+    easternmost = max(country_dict.items(), key=lambda x: x[1][0])
+    westernmost = min(country_dict.items(), key=lambda x: x[1][0])
+    return {
+        "northernmost": (northernmost[0], northernmost[1]),
+        "southernmost": (southernmost[0], southernmost[1]),
+        "easternmost": (easternmost[0], easternmost[1]),
+        "westernmost": (westernmost[0], westernmost[1]),
+    }
+
+# END_extremes

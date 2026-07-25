@@ -799,3 +799,29 @@ def find_geographic_extremes(country_dict=None):
     }
 
 # END_extremes
+
+# BEGIN_random-facts
+
+GEO_FACTS = [
+    "Russia spans 11 time zones",
+    "The Pacific Ocean covers more area than all land combined",
+    "Africa is the only continent in all four hemispheres",
+    "Vatican City is the smallest country at 0.44 km\u00b2",
+    "90% of Earth's population lives in the Northern Hemisphere",
+    "The equator is about 40,075 km long",
+    "Indonesia has over 17,000 islands",
+    "Chile is the longest north-south country",
+    "Canada has the longest coastline of any country",
+    "Mt. Everest is the highest point at 8,849m",
+    "The Mariana Trench is the deepest at -10,994m",
+    "Antarctica is the driest continent",
+    "The Nile is the longest river at 6,650 km",
+    "Lake Baikal holds 20% of the world's fresh water",
+    "Australia is wider than the Moon",
+]
+
+def get_random_fact():
+    """Get a random geographic fact."""
+    return random.choice(GEO_FACTS)
+
+# END_random-facts

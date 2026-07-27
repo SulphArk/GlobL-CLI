@@ -825,3 +825,24 @@ def get_random_fact():
     return random.choice(GEO_FACTS)
 
 # END_random-facts
+
+# BEGIN_info-panel
+
+def format_info_panel(country_name):
+    """Format a multi-line info panel for a country."""
+    lines = [f"  \u250c\u2500 {country_name} {'\u2500' * (30 - len(country_name))}"]
+    if country_name in COUNTRIES:
+        lon, lat = COUNTRIES[country_name]
+        lines.append(f"  \u2502 Coordinates: {format_coordinates(lon, lat)}")
+        tz = approximate_timezone(lon)
+        lines.append(f"  \u2502 Timezone: ~UTC{'+' if tz >= 0 else ''}{tz}")
+    if country_name in POPULATIONS:
+        lines.append(f"  \u2502 Population: ~{POPULATIONS[country_name]}M")
+    if country_name in CAPITALS:
+        lines.append(f"  \u2502 Capital: {CAPITALS[country_name][0]}")
+    if country_name in COUNTRY_AREAS:
+        lines.append(f"  \u2502 Area: {COUNTRY_AREAS[country_name]:,}k km\u00b2")
+    lines.append(f"  \u2514{'\u2500' * 36}")
+    return "\n".join(lines)
+
+# END_info-panel

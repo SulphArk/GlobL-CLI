@@ -846,3 +846,29 @@ def format_info_panel(country_name):
     return "\n".join(lines)
 
 # END_info-panel
+
+# BEGIN_rotation-presets
+
+ROTATION_PRESETS = {
+    "americas": -1.5, "europe": 0.0, "asia": 1.5,
+    "pacific": 3.0, "atlantic": -0.5, "africa": 0.3,
+    "middle-east": 0.8, "southeast-asia": 1.8,
+}
+
+def angle_to_view_country(lon, lat):
+    """Calculate the rotation angle to center a country on screen."""
+    DEG_TO_RAD = math.pi / 180.0
+    return -lon * DEG_TO_RAD
+
+def get_region_for_country(country_name):
+    """Determine which region preset a country belongs to."""
+    if country_name not in COUNTRIES:
+        return None
+    lon, lat = COUNTRIES[country_name]
+    for region, angle in ROTATION_PRESETS.items():
+        region_lon = -angle / DEG_TO_RAD
+        if abs(lon - region_lon) < 40:
+            return region
+    return "pacific"
+
+# END_rotation-presets

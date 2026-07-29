@@ -872,3 +872,33 @@ def get_region_for_country(country_name):
     return "pacific"
 
 # END_rotation-presets
+
+# BEGIN_profiling
+
+import time as _time
+
+class FrameProfiler:
+    """Simple profiler for measuring frame rendering performance."""
+    def __init__(self):
+        self.frame_times = []
+        self.max_samples = 100
+
+    def record(self, elapsed):
+        self.frame_times.append(elapsed)
+        if len(self.frame_times) > self.max_samples:
+            self.frame_times.pop(0)
+
+    def fps(self):
+        if not self.frame_times:
+            return 0.0
+        avg = sum(self.frame_times) / len(self.frame_times)
+        return 1.0 / avg if avg > 0 else 0.0
+
+    def summary(self):
+        if not self.frame_times:
+            return "No data"
+        avg = sum(self.frame_times) / len(self.frame_times)
+        mn, mx = min(self.frame_times), max(self.frame_times)
+        return f"FPS: {1/avg:.1f} | min: {1/mx:.1f} | max: {1/mn:.1f}"
+
+# END_profiling

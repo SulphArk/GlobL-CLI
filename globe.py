@@ -902,3 +902,24 @@ class FrameProfiler:
         return f"FPS: {1/avg:.1f} | min: {1/mx:.1f} | max: {1/mn:.1f}"
 
 # END_profiling
+
+# BEGIN_key-legend
+
+KEYBINDINGS = {
+    "q": "Quit the application",
+    "space": "Pause/resume rotation",
+    "[": "Decrease rotation speed",
+    "]": "Increase rotation speed",
+    ",": "Rotate left (when paused)",
+    ".": "Rotate right (when paused)",
+    "r": "Reset to default view",
+    "l": "Toggle country labels",
+    "g": "Toggle grid overlay",
+    "f": "Toggle facts display",
+    "h": "Show help / keybindings",
+    "c": "Cycle color themes",
+    "t": "Toggle tilt mode",
+    "1-9": "Jump to region presets",
+}
+
+# END_key-legend

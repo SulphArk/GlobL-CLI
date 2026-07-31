@@ -923,3 +923,32 @@ KEYBINDINGS = {
 }
 
 # END_key-legend
+
+# BEGIN_box-drawing
+
+BOX_CHARS = {
+    "tl": "\u2554", "tr": "\u2557", "bl": "\u255a", "br": "\u255d",
+    "h": "\u2550", "v": "\u2551", "lt": "\u2560", "rt": "\u2563",
+    "tb": "\u2566", "bb": "\u2569", "cross": "\u256c",
+}
+
+def draw_box(width, height, title=""):
+    """Create a box-drawing string of given dimensions."""
+    if width < 4 or height < 3:
+        return []
+    top = BOX_CHARS["tl"] + BOX_CHARS["h"] * (width - 2) + BOX_CHARS["tr"]
+    mid = BOX_CHARS["v"] + " " * (width - 2) + BOX_CHARS["v"]
+    bot = BOX_CHARS["bl"] + BOX_CHARS["h"] * (width - 2) + BOX_CHARS["br"]
+    lines = [top]
+    if title:
+        pad = width - 4 - len(title)
+        left, right = pad // 2, pad - pad // 2
+        lines.append(BOX_CHARS["v"] + " " * left + title + " " * right + BOX_CHARS["v"])
+    else:
+        lines.append(mid)
+    for _ in range(height - 3):
+        lines.append(mid)
+    lines.append(bot)
+    return lines
+
+# END_box-drawing

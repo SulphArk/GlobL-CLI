@@ -952,3 +952,21 @@ def draw_box(width, height, title=""):
     return lines
 
 # END_box-drawing
+
+# BEGIN_scale-bar
+
+def render_scale_bar(width_km, chars=20):
+    """Render a scale bar for the globe display."""
+    km_per_char = width_km / chars
+    bar = "\u251c" + "\u2500" * (chars - 2) + "\u2524"
+    nice_numbers = [1, 2, 5, 10, 20, 50, 100, 200, 500,
+                    1000, 2000, 5000, 10000, 20000]
+    label_km = min(nice_numbers, key=lambda x: abs(x - width_km / 2))
+    label_str = f"{label_km} km"
+    return bar, label_str
+
+def estimate_visible_width():
+    """Estimate the km width of the visible globe hemisphere."""
+    return 20000  # Approximate visible width in km
+
+# END_scale-bar

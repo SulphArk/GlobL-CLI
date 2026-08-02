@@ -386,3 +386,18 @@ def main():
 
 if __name__ == '__main__':
     main()
+# BEGIN_haversine-distance
+
+def haversine_distance(lon1, lat1, lon2, lat2):
+    """Calculate great-circle distance in km between two points."""
+    DEG_TO_RAD = math.pi / 180.0
+    R = 6371.0
+    dlat = (lat2 - lat1) * DEG_TO_RAD
+    dlon = (lon2 - lon1) * DEG_TO_RAD
+    a = (math.sin(dlat / 2) ** 2
+         + math.cos(lat1 * DEG_TO_RAD) * math.cos(lat2 * DEG_TO_RAD)
+         * math.sin(dlon / 2) ** 2)
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    return R * c
+
+# END_haversine-distance
